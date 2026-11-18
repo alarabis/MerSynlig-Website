@@ -1174,6 +1174,12 @@
       .hero .hero-pill .cred-pill-icon { width:32px; height:32px; }
     }
   </style>
+<style>
+#page-home .hero-content {display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+#page-home .hero-pills {grid-column:1/-1;display:grid;grid-template-columns:repeat(4,max-content);grid-auto-flow:column;justify-content:space-between;gap:24px;max-width:100%;overflow-x:auto;padding:6px 0;margin:clamp(48px,7vh,80px) 0 0}
+#page-home .hero-sub-headline {width:fit-content;margin-bottom:0}
+#page-home .hero-sub-headline::before {left:-3px;top:0;transform:translate(-50%,-10%)}
+</style>
 </head>
 <body>
 
@@ -1212,6 +1218,7 @@
       <span class="hero-label">Hjemmesider</span>
       <h1 class="hero-main-headline" style="overflow:visible;padding-bottom:8px;">Premium, Rimelig.</h1>
       <p class="hero-sub-headline">Gratis domene og bedriftsmail inkludert</p>
+    </div>
       <div class="hero-pills">
 <div class="hero-pill">
         <div class="cred-pill-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -1230,7 +1237,6 @@
         <span class="hero-pill-text">Gratis SSL-sertifikat</span>
       </div>
       </div>
-    </div>
   </div>
 </section>
 
