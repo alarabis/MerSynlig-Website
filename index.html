@@ -1164,11 +1164,13 @@
     .faq-a.open { max-height: 300px; padding-bottom: 20px; }
     .faq-a p { font-size: 15px; color: #555; line-height: 1.75; margin: 0; }
     .faq-q.active .faq-icon { transform: rotate(45deg); }
-    .hero .hero-pills { display:grid; grid-template-columns:repeat(2,max-content); gap:8px 24px; }
+    .hero .hero-content { grid-template-columns:minmax(0,1fr); }
+    .hero .hero-pills { display:flex; flex-flow:row nowrap; align-items:center; justify-content:space-between; gap:24px; width:100%; margin-top:clamp(48px,7vh,80px); overflow-x:auto; padding:8px 0; }
+    .hero .hero-pill { flex:none; }
     .hero-sub-headline { position:relative; }
     .hero-sub-headline::before { content:""; position:absolute; left:0; top:-9px; width:5px; height:5px; border-radius:50%; background:var(--red); }
-    @media (max-width:600px) {
-      .hero .hero-pills { grid-template-columns:1fr; gap:4px; }
+    @media (max-width:768px) {
+      .hero .hero-pills { gap:22px; }
       .hero .hero-pill .cred-pill-icon { width:32px; height:32px; }
     }
   </style>
