@@ -1164,6 +1164,13 @@
     .faq-a.open { max-height: 300px; padding-bottom: 20px; }
     .faq-a p { font-size: 15px; color: #555; line-height: 1.75; margin: 0; }
     .faq-q.active .faq-icon { transform: rotate(45deg); }
+    .hero .hero-pills { display:grid; grid-template-columns:repeat(2,max-content); gap:8px 24px; }
+    .hero-sub-headline { position:relative; }
+    .hero-sub-headline::before { content:""; position:absolute; left:0; top:-9px; width:5px; height:5px; border-radius:50%; background:var(--red); }
+    @media (max-width:600px) {
+      .hero .hero-pills { grid-template-columns:1fr; gap:4px; }
+      .hero .hero-pill .cred-pill-icon { width:32px; height:32px; }
+    }
   </style>
 </head>
 <body>
@@ -1179,7 +1186,7 @@
       <li><a href="javascript:void(0)" onclick="showPage('tjenester')">Tjenester</a></li>
       <li><a href="javascript:void(0)" onclick="showPage('kontakt')">Kontakt oss</a></li>
     </ul>
-    <a href="javascript:void(0)" class="btn" onclick="showPage('kontakt')">Book strategisamtale</a>
+
     <button class="nav-menu-toggle" type="button" onclick="toggleMobileNav()" aria-label="Åpne meny" aria-expanded="false">
       <span></span>
       <span></span>
@@ -1191,7 +1198,7 @@
   <a href="javascript:void(0)" onclick="showPage('resultater');closeMobileNav()">Resultater <span>→</span></a>
   <a href="javascript:void(0)" onclick="showPage('tjenester');closeMobileNav()">Tjenester <span>→</span></a>
   <a href="javascript:void(0)" onclick="showPage('kontakt');closeMobileNav()">Kontakt oss <span>→</span></a>
-  <a href="javascript:void(0)" class="btn" onclick="showPage('kontakt');closeMobileNav()">Book strategisamtale</a>
+
 </div>
 
 <!-- ═══ PAGES ═══ -->
@@ -1203,27 +1210,23 @@
       <span class="hero-label">Hjemmesider</span>
       <h1 class="hero-main-headline" style="overflow:visible;padding-bottom:8px;">Premium, Rimelig.</h1>
       <p class="hero-sub-headline">Gratis domene og bedriftsmail inkludert</p>
-      <div class="hero-cta">
-        <a href="javascript:void(0)" class="btn" onclick="showPage('kontakt')">Få en konsultasjon →</a>
-        <a href="javascript:void(0)" class="btn btn-outline" onclick="showPage('resultater')">Se hjemmesider vi lagde</a>
-      </div>
-    </div>
-    <div class="hero-pills">
-      <div class="hero-pill">
-        <div class="cred-pill-icon"><svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <span class="hero-pill-text">Leveres innen 4 dager</span>
-      </div>
-      <div class="hero-pill">
-        <div class="cred-pill-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <span class="hero-pill-text">12 måneders garanti</span>
-      </div>
-      <div class="hero-pill">
+      <div class="hero-pills">
+<div class="hero-pill">
         <div class="cred-pill-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
         <span class="hero-pill-text">Ingen skjulte kostnader</span>
       </div>
-      <div class="hero-pill">
+<div class="hero-pill">
+        <div class="cred-pill-icon"><svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <span class="hero-pill-text">5 Dagers leveringstid</span>
+      </div>
+<div class="hero-pill">
+        <div class="cred-pill-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <span class="hero-pill-text">12 Måneders garanti</span>
+      </div>
+<div class="hero-pill">
         <div class="cred-pill-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <span class="hero-pill-text">Gratis SSL-sertifikat</span>
+      </div>
       </div>
     </div>
   </div>
