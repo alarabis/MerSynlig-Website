@@ -1180,6 +1180,16 @@
 #page-home .hero-sub-headline {width:fit-content;margin-bottom:0}
 #page-home .hero-sub-headline::before {left:-3px;top:0;transform:translate(-50%,-10%)}
 </style>
+<style>
+#page-home .hero-content {max-width:1440px;grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);column-gap:clamp(20px,3vw,48px)}
+#page-home .hero-main-headline {font-size:clamp(40px,4.6vw,72px)}
+.hero-showcase {display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+@media(max-width:800px){
+  #page-home .hero {height:auto;min-height:100svh;padding:110px 0 54px}
+  #page-home .hero-content {grid-template-columns:minmax(0,1fr);row-gap:28px}
+  #page-home .hero-pills {margin-top:8px}
+}
+</style>
 </head>
 <body>
 
@@ -1219,6 +1229,7 @@
       <h1 class="hero-main-headline" style="overflow:visible;padding-bottom:8px;">Premium, Rimelig.</h1>
       <p class="hero-sub-headline">Gratis domene og bedriftsmail inkludert</p>
     </div>
+    <video class="hero-showcase" poster="hero-showcase.jpg" autoplay muted playsinline loop aria-label="Nettsider for Håndverkeren Hansen og Transport Pedersen AS"></video>
       <div class="hero-pills">
 <div class="hero-pill">
         <div class="cred-pill-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -2214,5 +2225,23 @@ document.addEventListener('DOMContentLoaded', initReveal);
 window.addEventListener('load', initReveal);
 </script>
 
+<script>
+const showcase = document.querySelector('.hero-showcase');
+async function loadShowcase() {
+  const parts = [];
+  for (let start = 0; start < 28; start += 4) {
+    const batch = Array.from({length: Math.min(4, 28 - start)}, async (_, offset) => {
+      const number = String(start + offset).padStart(2, '0');
+      const response = await fetch('media/hero-loop/part-' + number + '.bin');
+      if (!response.ok) throw new Error('Video unavailable');
+      return response.blob();
+    });
+    parts.push(...await Promise.all(batch));
+  }
+  showcase.src = URL.createObjectURL(new Blob(parts, {type: 'video/mp4'}));
+  await showcase.play().catch(() => { showcase.controls = true; });
+}
+loadShowcase().catch(() => { showcase.addEventListener('click', loadShowcase, {once:true}); });
+</script>
 </body>
 </html>
